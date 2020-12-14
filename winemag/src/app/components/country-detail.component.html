@@ -1,0 +1,17 @@
+<button type="button" class="btn btn-dark mt-4" [routerLink]="['/']">Back to Country List</button>
+<div class="mt-4 mb-4">
+    <h1>{{country}}</h1>
+</div>
+
+<div class="d-flex justify-content-between mb-4">
+    <button type="button" [value]="offset" (click)="previousPage()" *ngIf="offset>=20" class="btn btn-primary">Previous</button>
+    <button type="button" [value]="offset" (click)="nextPage()" class="btn btn-primary" *ngIf="detail.length > 19">Next</button>
+</div>
+
+<div class="row mt-4 mb-4" class="list-group">
+    <div *ngFor="let each of detail" class="list-group-item list-group-item-action" [routerLink]="['/wineDetail', each._id]">
+        <h4>Name: {{each.title}}</h4>
+        <h5 *ngIf="each.price"><i>Price: {{each.price}}</i></h5>
+        <h5 *ngIf="!each.price"><i>Price: Not Available!</i></h5>
+    </div>
+</div>
